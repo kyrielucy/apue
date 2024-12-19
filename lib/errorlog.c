@@ -39,6 +39,21 @@ log_ret(const char *fmt, ...)
  * Print a message and terminate.
  */
 void
+log_sys(const char *fmt, ...)
+{
+  va_list ap;
+
+  va_start(ap, fmt);
+  log_doit(1, errno, LOG_ERR, fmt, ap);
+  va_end(ap);
+  exit(2);
+}
+
+/*
+ * Fatal error related to a system call.
+ * Print a message and terminate.
+ */
+void
 log_msg(const char *fmt, ...)
 {
   va_list ap;
@@ -99,6 +114,6 @@ log_doit(int errnoflag, int error, int priority, const char *fmt,
     fputs(buf, stderr);
     fflush(stderr);
   } else {
-    syslog(pricility, "%s", buf);
+    syslog(priority, "%s", buf);
   }
 }
