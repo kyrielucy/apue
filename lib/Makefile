@@ -4,7 +4,7 @@
 
 ROOT = ..
 PLATFORM = $(shell $(ROOT)/systype.sh)
-include $(ROOT)/Makefile.defines.$(PLATFORM)
+include $(ROOT)/Make.defines.$(PLATFORM)
 
 LIBMISC = libapue.a
 

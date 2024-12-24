@@ -1,6 +1,7 @@
 #include "apue.h"
 #include <errno.h>    /* for definition os error */
 #include <stdarg.h>   /* ISO C variable arguments */
+#include <syslog.h>
 
 static void log_doit(int, int, int, const char *, va_list ap);
 
@@ -108,7 +109,7 @@ log_doit(int errnoflag, int error, int priority, const char *fmt,
   if (errnoflag)
     snprintf(buf + strlen(buf), MAXLINE - strlen(buf) - 1, ": %s",
              strerror(error));
-  strcat("\n");
+  strcat(buf,"\n");
   if (log_to_stderr) {
     fflush(stdout);
     fputs(buf, stderr);
