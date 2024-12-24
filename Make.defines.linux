@@ -1,0 +1,17 @@
+# Common make definitions, customized for each platform
+
+# Definitions required in all program directories to compile and link
+# C programs using gcc
+
+CC=gcc
+LDFLAGS=
+LDDIR=-L$(ROOT)/lib
+LDLIBS=$(LDDIR) -lapue $(EXTRALIBS)
+CFLAGS=-ansi -I$(ROOT)/include -Wall -DLINUX -D_GNU_SOURCE
+RANLIB=echo
+AR=ar
+AWK=awk
+LIBAPUE=$(ROOT)/lib/libapue.a
+
+# Common temp file to delete from each directory.
+TEMPFILES=core core.* *.o temp.* *.out
