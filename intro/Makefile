@@ -2,7 +2,7 @@ ROOT = ..
 PLATFORM = $(shell $(ROOT)/systype.sh)
 include $(ROOT)/Make.defines.$(PLATFORM)
 
-PROGS = myls1 mycat getcputc helloworld myshell1 testerror
+PROGS = myls1 mycat getcputc helloworld myshell1 testerror myshell2
 
 all:	$(PROGS)
 
