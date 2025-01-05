@@ -1,0 +1,54 @@
+#!/bin/sh
+
+# 更新快照信息
+sudo emerge-webrsync
+
+sleep 1
+# 更新系统
+sudo emerge -auDN @world
+# 清除不再依赖的软件包
+sudo emerge -c --exclude gentoo-sources
+# sudo eclean-pkg -i
+# sudo eclean-dist -i
+
+# 更新grub2
+# sudo emerge -a sys-boot/grub:2
+# sudo emerge -a sys-boot/os-prober sys-boot/efibootmgr
+# 针对dos/传统BIOS系统：
+# grub-install /dev/nvme1n1p1
+# grub-install --target=x86_64-efi--efi-directory=/boot/efi --removable
+# if error Read-only file system
+# sudo mount -o remount,rw,nosuid,nodev,noexec --types efivarfs efivarfs \
+#    sys/firmware/efi/efivarfs
+
+# 更新內核
+# sudo eselect kernel set 2
+# cd /usr/src/linux/
+# sudo cp /boot/config-6.6.66-gentoo .config
+# sudo make oldconfig
+# diff <(sort .config) <(sort .config.old) | awk '/^<.*(=|Linux)/ { $1=""; print }'
+# diff <(sort .config) <(sort .config.old) | awk '/^>.*(=|Linux)/ { $1=""; print }'
+# /usr/src/linux/scripts/diffconfig .config.old .config
+# sudo make syncconfig
+# sudo make menuconfig
+# sudo make modules_prepare
+# sudo make -j1
+# sudo make modules_install
+# sudo make install
+
+# sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+# sudo emerge -c gentoo-sources:xx.yy.zz
+
+# 自动清除内核并保留最新的4个
+# sudo eclean-kernel -n 4
+
+# 手动清除内核
+# sudo rm -r /usr/src/linux-6.6.62-gentoo/
+# sudo rm -r /lib/modules/6.6.62-gentoo/
+# sudo rm /boot/vmlinuz-6.6.62-gentoo
+# sudo rm /boot/System.map-6.6.62-gentoo
+# sudo rm /boot/config-6.6.62-gentoo
+# sudo rm /boot/initramfs-6.6.62-gentoo.img
+
+#sudo
