@@ -1,3 +1,11 @@
 *.o
 *.a
 *.out
+intro/getcputc
+intro/giduid
+intro/helloworld
+intro/mycat
+intro/myls1
+intro/myshell1
+intro/myshell2
+intro/testerror
