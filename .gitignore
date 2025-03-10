@@ -9,3 +9,6 @@ intro/myls1
 intro/myshell1
 intro/myshell2
 intro/testerror
+standards/conf*
+standards/sysconf.sym
+standards/pathconf.sym
