@@ -12,3 +12,6 @@ intro/testerror
 standards/conf*
 standards/sysconf.sym
 standards/pathconf.sym
+standards/option*
+standards/sysopt.sym
+standards/pathopt.sym
